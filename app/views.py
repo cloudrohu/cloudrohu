@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.core.paginator import Paginator
 from app.models import *
 from blog.models import *
+from utility.models import *
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 # Create your views here.
@@ -22,8 +23,10 @@ def home(request):
     meta = Meta.objects.all().order_by('-id')[0:1]
     content_clider= Content_Slider.objects.all().order_by('-id')[0:1]
     bg = Back_Graound.objects.all().order_by('-id')[0:1]
+    mc = Main_Category.objects.all().order_by('-id')[0:16]
     context = {
         'sliders': sliders,
+        'mc': mc,
         'sc': sc,
         'banners': banners,
         'banners_2': banners_2,
