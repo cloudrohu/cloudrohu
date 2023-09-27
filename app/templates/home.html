@@ -302,9 +302,65 @@
         </section>
         <!-- moveing-text-area-end -->
         <br>
+
+        <!-- services-area-start -->
+        {% for i in about %}
+    <div class="services-area pt-70 light-bg-s pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="abs-section-title text-center">
+                        <span>HOW IT WORKS</span>
+                        <h4>Complete Customer Ideas</h4>
+                        <p>{{i.how_to_work}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-40">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="services-item mb-30">
+                        <div class="services-icon mb-25">
+                            <i class="fal fa-share-square"></i>
+                        </div>
+                        <h6>Mission </h6>
+                        <p>{{i.mission}}.</p>
+                        <div class="s-count-number">
+                            <span>01</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="services-item mb-30">
+                        <div class="services-icon mb-25">
+                            <i class="fal fa-file"></i>
+                        </div>
+                        <h6>Vision </h6>
+                        <p>{{i.vision}}</p>
+                        <div class="s-count-number">
+                            <span>02</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="services-item mb-30">
+                        <div class="services-icon mb-25">
+                            <i class="fal fa-thumbs-up"></i>
+                        </div>
+                        <h6>Values</h6>
+                        <p>{{i.values}}</p>
+                        <div class="s-count-number">
+                            <span>03</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- services-area-end -->
+    {% endfor %}
         <!-- recomand-product-area-start -->
-        <section class="recomand-product-area">
-            <div class="container">
+        <section class="recomand-produ  ct-area">
+            <div class="container">   
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="section__head d-flex justify-content-between mb-10">

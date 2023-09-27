@@ -12,7 +12,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class Auther(models.Model):
-    author_profile = models.ImageField(upload_to="doctor")
+    author_profile = models.ImageField(upload_to="image")
     name = models.CharField(max_length=100, null=True)
     about_doctor = models.TextField()
 

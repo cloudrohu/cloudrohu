@@ -24,6 +24,8 @@ def home(request):
     content_clider= Content_Slider.objects.all().order_by('-id')[0:1]
     bg = Back_Graound.objects.all().order_by('-id')[0:1]
     mc = Main_Category.objects.all().order_by('-id')[0:16]
+    about= About.objects.all().order_by('-id')[0:1]
+
     context = {
         'sliders': sliders,
         'mc': mc,
@@ -39,6 +41,7 @@ def home(request):
         'service': service,
         'content_clider': content_clider,
         'bg': bg,
+        'about': about,
     }
     return render(request, 'home.html', context)
 

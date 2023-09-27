@@ -2,7 +2,7 @@ from email.mime import image
 from email.policy import default
 from unicodedata import name
 from django.db import models
-from utility.models import Category
+from utility.models import Main_Category
 
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
@@ -14,7 +14,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 ## logo
 class Companylogo(models.Model):
-    image = models.ImageField(upload_to='slider/img')
+    image = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)    
     web_link = models.CharField(max_length=250,null=True)    
     def __str__(self):
@@ -29,7 +29,7 @@ EVENTS = (
     )
 
 class Event(models.Model):
-    image = models.ImageField(upload_to='slider/img')
+    image = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)
     event = models.CharField(choices=EVENTS,max_length=20)
     description = models.CharField(max_length=500,null=True)       
@@ -46,7 +46,7 @@ class Faq(models.Model):
 
 #1 Slider
 class Slider(models.Model):
-    image = models.ImageField(upload_to='slider/img')
+    image = models.ImageField(upload_to='image')
     line_1 = models.CharField(max_length=250,null=True)
     line_2 = models.CharField(max_length=250,null=True)
     line_3 = models.CharField(max_length=250,null=True)
@@ -69,7 +69,7 @@ COLOR = (
     )
 #1 Slider
 class Header(models.Model):
-    logo = models.ImageField(upload_to='slider/img')
+    logo = models.ImageField(upload_to='image')
     color = models.CharField(choices=COLOR,max_length=100)
     number = models.CharField(max_length=12,null=True)
     contant_1 = models.CharField(max_length=250,null=True)
@@ -96,17 +96,17 @@ class Footer(models.Model):
 
 class Back_Graound(models.Model):
     name = models.CharField(max_length=500,null=True)
-    fqa = models.ImageField(upload_to='BackGraound')
-    blog = models.ImageField(upload_to='BackGraound')
-    blog_details = models.ImageField(upload_to='BackGraound')
-    wishlist = models.ImageField(upload_to='BackGraound')
-    doctor = models.ImageField(upload_to='BackGraound')
-    doctor_details = models.ImageField(upload_to='BackGraound')
-    service = models.ImageField(upload_to='BackGraound')
-    service_details = models.ImageField(upload_to='BackGraound')
-    media = models.ImageField(upload_to='BackGraound')
+    fqa = models.ImageField(upload_to='image')
+    blog = models.ImageField(upload_to='image')
+    blog_details = models.ImageField(upload_to='image')
+    wishlist = models.ImageField(upload_to='image')
+    doctor = models.ImageField(upload_to='image')
+    doctor_details = models.ImageField(upload_to='image')
+    service = models.ImageField(upload_to='image')
+    service_details = models.ImageField(upload_to='image')
+    media = models.ImageField(upload_to='image')
 
-    contact = models.ImageField(upload_to='BackGraound')
+    contact = models.ImageField(upload_to='image')
     def __str__(self):
         return self.name
 
@@ -122,7 +122,7 @@ class Content_Slider(models.Model):
 
 #1 Slider
 class Meta(models.Model):
-    favicon = models.ImageField(upload_to='favicon')
+    favicon = models.ImageField(upload_to='image')
     title = models.CharField(max_length=500,null=True)
     keyword = models.CharField(max_length=500,null=True)
     discriptaion = models.CharField(max_length=500,null=True)
@@ -132,7 +132,7 @@ class Meta(models.Model):
 
 # 2 Banner
 class Banner(models.Model):
-    image = models.ImageField(upload_to='banner/img')
+    image = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)
     line_1 = models.CharField(max_length=250,null=True)
     line_2 = models.CharField(max_length=250,null=True)   
@@ -147,7 +147,7 @@ GENDER = (
 
 #0 category
 class Service_Categoray(models.Model):
-    image = models.ImageField(upload_to='slider/img')
+    image = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)
     name_hindi = models.CharField(max_length=250,null=True)
     description = models.CharField(max_length=250,null=True)
@@ -159,11 +159,11 @@ class Service_Categoray(models.Model):
 #5 Depatment
 class Service(models.Model):   
     categoray = models.ForeignKey(Service_Categoray,on_delete=models.CASCADE)	
-    industry = models.ForeignKey(Category,on_delete=models.CASCADE)	
+    industry = models.ForeignKey(Main_Category,on_delete=models.CASCADE)	
     service_name = models.CharField(max_length=250,null=True)
     hindi_name = models.CharField(max_length=250,null=True)
     sort_description = models.CharField(max_length=250,null=True)
-    future_image = models.ImageField(upload_to='service/img')   
+    future_image = models.ImageField(upload_to='image')   
     description = RichTextField()
     slug = models.SlugField(max_length=500,null=True,blank=True)
     def __str__(self):
@@ -204,7 +204,7 @@ class Service_Faq(models.Model):
 #9 TPA
 class Service_Image(models.Model):
     service = models.ForeignKey(Service,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='service/tpa')
+    image = models.ImageField(upload_to='image')
     company = models.CharField(max_length=250,null=True)
     description = models.CharField(max_length=250,null=True)
     def __str__(self):
@@ -212,7 +212,7 @@ class Service_Image(models.Model):
 
 #10 Featured
 class Featured(models.Model):
-    image = models.ImageField(upload_to='service/featured')
+    image = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)
     title = models.CharField(max_length=250,null=True)
     description = models.CharField(max_length=250,null=True)
@@ -221,7 +221,7 @@ class Featured(models.Model):
 
 #10 Social
 class Social(models.Model):
-    icon = models.ImageField(upload_to='service/social')
+    icon = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)
     link = models.CharField(max_length=550,null=True)
     def __str__(self):
@@ -229,7 +229,7 @@ class Social(models.Model):
 
 #11 Team
 class Team(models.Model):
-    image = models.ImageField(upload_to='service/team')
+    image = models.ImageField(upload_to='image')
     name = models.CharField(max_length=250,null=True)
     title = models.CharField(max_length=250,null=True)
     description = models.CharField(max_length=250,null=True)
@@ -251,7 +251,7 @@ class Contact(models.Model):
 
     
 class About(models.Model):   
-    image = models.ImageField(upload_to='slider/img') 
+    image = models.ImageField(upload_to='image') 
     main_title=models.CharField(max_length=2000)
     experience=models.CharField(max_length=3)
     title=models.CharField(max_length=255)
